@@ -5,7 +5,7 @@
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
 #
-from datasets import Dataset as HFDataset
+#from datasets import Dataset as HFDataset
 from logai.algorithms.vectorization_algo.forecast_nn import ForecastNNVectorizedDataset
 from logai.analysis.anomaly_detector import AnomalyDetectionConfig
 from logai.algorithms.factory import factory
@@ -26,8 +26,8 @@ class NNAnomalyDetector:
 
     def fit(
         self,
-        train_data: ForecastNNVectorizedDataset or HFDataset,
-        dev_data: ForecastNNVectorizedDataset or HFDataset,
+        train_data: ForecastNNVectorizedDataset,
+        dev_data: ForecastNNVectorizedDataset,
     ):
         """
         Trains an anomaly detection given the training and validation datasets.
@@ -37,7 +37,7 @@ class NNAnomalyDetector:
         """
         return self.anomaly_detector.fit(train_data, dev_data)
 
-    def predict(self, test_data: ForecastNNVectorizedDataset or HFDataset):
+    def predict(self, test_data: ForecastNNVectorizedDataset):
         """
         Predicts anomalies given the test dataset.
 
